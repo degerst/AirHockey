@@ -1,4 +1,4 @@
 AirHockey
 =========
 
-A simple Airhockey game, just learning
+A very very simple Airhockey game, just learning
