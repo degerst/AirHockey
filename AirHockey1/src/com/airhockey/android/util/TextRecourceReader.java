@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 import android.content.Context;
 import android.content.res.Resources;
 
-public class TestRecourceReader {
+public class TextRecourceReader {
 
 	public static String readTextFileFromResource(Context context, int resourceId) {
 		StringBuilder body = new StringBuilder();
