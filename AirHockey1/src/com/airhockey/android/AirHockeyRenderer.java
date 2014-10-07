@@ -57,7 +57,24 @@ public class AirHockeyRenderer implements Renderer {
 				0.5f, 0f,
 				// Mallets
 				0f, -0.25f,
-				0f, 0.25f
+				0f, 0.25f,
+				//puck
+				0f, 0f,
+				// rectangle 1
+				// Triangle 1
+				-0.6f, -0.6f,
+				0.6f, 0.6f,
+				-0.6f, 0.6f,
+				// Triangle 2
+				-0.6f, -0.6f,
+				0.6f, -0.6f,
+				0.6f, 0.6f,
+				// goal top
+				-0.1f, 0.5f,
+				0.1f, 0.5f,
+				// goal bottom
+				-0.1f, -0.5f,
+				0.1f, -0.5f
 				};
 		
 		vertexData = ByteBuffer.allocateDirect(tableVerticesWithTriangles.length * BYTES_PER_FLOAT).order(ByteOrder.nativeOrder()).asFloatBuffer();
@@ -67,6 +84,8 @@ public class AirHockeyRenderer implements Renderer {
 	@Override
 	public void onDrawFrame(GL10 glUnused) {
 		glClear(GL_COLOR_BUFFER_BIT);
+		glUniform4f(uColorLocation, 0.5f, 1.0f, 1.0f, 1.0f);
+		glDrawArrays(GL_TRIANGLES, 11, 6);
 		glUniform4f(uColorLocation, 1.0f, 1.0f, 1.0f, 1.0f);
 		glDrawArrays(GL_TRIANGLES, 0, 6);
 		glUniform4f(uColorLocation, 1.0f, 0.0f, 0.0f, 1.0f);
@@ -77,6 +96,15 @@ public class AirHockeyRenderer implements Renderer {
 		// Draw the second mallet red.
 		glUniform4f(uColorLocation, 1.0f, 0.0f, 0.0f, 1.0f);
 		glDrawArrays(GL_POINTS, 9, 1);
+		// Draw the black puck.
+		glUniform4f(uColorLocation, 0.0f, 0.0f, 0.0f, 0.0f);
+		glDrawArrays(GL_POINTS, 10, 1);
+		// Draw the top goal.
+		glUniform4f(uColorLocation, 0.0f, 0.0f, 0.0f, 0.0f);
+		glDrawArrays(GL_LINES, 17, 2);
+		// Draw the bottom goal.
+		glUniform4f(uColorLocation, 0.0f, 0.0f, 0.0f, 0.0f);
+		glDrawArrays(GL_LINES, 19, 2);
 	}
 
 	@Override
